@@ -56,8 +56,7 @@
     [self textFieldDidChange:self];
 }
 
-- (void)setLineColor:(UIColor *)lineColor
-{
+- (void)setLineColor:(UIColor *)lineColor{
     _lineColor = lineColor;
     line.backgroundColor = _lineColor;
 }
@@ -81,19 +80,15 @@
              usingSpringWithDamping:damping
               initialSpringVelocity:velocity
                             options:UIViewAnimationOptionCurveEaseInOut animations:^{
-
+                                
                                 if (!self.text || self.text.length <= 0) {
                                     placeHolderLabel.transform = CGAffineTransformIdentity;
-                                }
-                                else {
+                                }else {
                                     placeHolderLabel.transform = CGAffineTransformMakeTranslation(0, -placeHolderLabel.frame.size.height - 5);
                                 }
-                                
                             }
                          completion:^(BOOL finished) {
-                             
                          }];
-       
     }
 }
 
@@ -113,19 +108,16 @@
                          
                          if (showError) {
                              line.backgroundColor=errorColor;
-                         }
-                         else {
+                         } else {
                              line.backgroundColor=self.lineColor;
                          }
                          
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
-                             
                              //finalizacion
                          }
                      }];
-    
 }
 
 -(void)unhighlight
@@ -137,20 +129,16 @@
                          
                          if (showError) {
                              line.backgroundColor = errorColor;
-                         }
-                         else {
+                         } else {
                              line.backgroundColor = [self.lineColor colorWithAlphaComponent:DEFAULT_ALPHA_LINE];
                          }
-
-                         
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
                              //finalizacion
                          }
                      }];
-
-  }
+}
 
 - (void)setPlaceholderAttributes:(NSDictionary *)placeholderAttributes
 {
@@ -166,7 +154,7 @@
                            NSFontAttributeName : [self.font fontWithSize: self.font.pointSize]};
     
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder ?: @"" attributes: self.placeholderAttributes ?: atts];
-
+    
     [self setEnableMaterialPlaceHolder:self.enableMaterialPlaceHolder];
 }
 
@@ -175,7 +163,7 @@
     _enableMaterialPlaceHolder = enableMaterialPlaceHolder;
     
     if (!placeHolderLabel) {
-        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 0, self.frame.size.height)];
+        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, 0, self.frame.size.height)];
         [self addSubview:placeHolderLabel];
     }
     placeHolderLabel.alpha = _enableMaterialPlaceHolder ? placeHolderLabel.alpha : 0;
@@ -196,7 +184,7 @@
 - (BOOL)resignFirstResponder
 {
     BOOL returnValue = [super resignFirstResponder];
-   
+    
     [self unhighlight];
     
     return returnValue;
