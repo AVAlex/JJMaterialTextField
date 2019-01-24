@@ -67,6 +67,7 @@
         
         if (!self.text || self.text.length > 0) {
             placeHolderLabel.alpha = 1;
+            placeHolderLabel.hidden = NO;
             self.attributedPlaceholder = nil;
         }
         
@@ -163,8 +164,9 @@
     _enableMaterialPlaceHolder = enableMaterialPlaceHolder;
     
     if (!placeHolderLabel) {
-        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, 0, self.frame.size.height)];
+        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 0, self.frame.size.height)];
         [self addSubview:placeHolderLabel];
+        placeHolderLabel.hidden = YES;
     }
     placeHolderLabel.alpha = _enableMaterialPlaceHolder ? placeHolderLabel.alpha : 0;
     placeHolderLabel.attributedText = self.attributedPlaceholder;
